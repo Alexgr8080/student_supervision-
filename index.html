@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard - Enhanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-blue-800 text-white p-4">
+            <div class="text-xl font-bold mb-10 text-center">
+                Supervision System
+            </div>
+            <nav>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white bg-blue-900">
+                    <i class="fas fa-home w-6"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-users w-6"></i>
+                    <span>My Students</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-calendar-alt w-6"></i>
+                    <span>Meetings</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-tasks w-6"></i>
+                    <span>Tasks & Milestones</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-clipboard-check w-6"></i>
+                    <span>Ethics Reviews</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-file-alt w-6"></i>
+                    <span>Thesis Submissions</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-chart-bar w-6"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="#" class="block px-4 py-2 mb-1 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-cog w-6"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="absolute bottom-4 left-4">
+                <a href="#" class="block px-4 py-2 rounded flex items-center text-white hover:bg-blue-700">
+                    <i class="fas fa-sign-out-alt w-6"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex justify-between items-center p-4">
+                    <h1 class="text-xl font-semibold">Supervisor Overview</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i class="fas fa-bell text-gray-500 cursor-pointer"></i>
+                            <div class="absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center text-white">3</div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                                <span>JD</span>
+                            </div>
+                            <span class="text-gray-700">Dr. Jane Doe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-4 py-2 bg-gray-50 border-t border-b text-sm">
+                    <p><strong>Academic Year:</strong> 2024-2025</p>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <!-- Stats Overview -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Students</p>
+                                <h3 class="text-2xl font-bold">12</h3>
+                            </div>
+                            <div class="rounded-full bg-blue-100 p-2">
+                                <i class="fas fa-users text-blue-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-500">
+                            <span class="text-green-500"><i class="fas fa-arrow-up"></i> 2</span> from last month
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">On Track</p>
+                                <h3 class="text-2xl font-bold">8</h3>
+                            </div>
+                            <div class="rounded-full bg-green-100 p-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-500">
+                            <span class="text-green-500"><i class="fas fa-arrow-up"></i> 1</span> from last week
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Behind Schedule</p>
+                                <h3 class="text-2xl font-bold">3</h3>
+                            </div>
+                            <div class="rounded-full bg-yellow-100 p-2">
+                                <i class="fas fa-exclamation-circle text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-500">
+                            <span class="text-red-500"><i class="fas fa-arrow-up"></i> 1</span> from last week
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-gray-500 text-sm">Needs Attention</p>
+                                <h3 class="text-2xl font-bold">1</h3>
+                            </div>
+                            <div class="rounded-full bg-red-100 p-2">
+                                <i class="fas fa-bell text-red-500"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-xs text-gray-500">
+                            <span class="text-green-500"><i class="fas fa-arrow-down"></i> 2</span> from last week
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity & Upcoming Events -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="border-b px-4 py-3 flex justify-between items-center">
+                            <h3 class="font-semibold">Recent Activity</h3>
+                            <a href="#" class="text-blue-600 text-sm">View All</a>
+                        </div>
+                        <div class="p-4">
+                            <ul class="space-y-3">
+                                <li class="flex items-start space-x-3">
+                                    <div class="bg-blue-100 rounded-full p-2 flex-shrink-0 mt-1">
+                                        <i class="fas fa-file-alt text-blue-500 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm"><strong>Emma Johnson</strong> submitted thesis draft</p>
+                                        <p class="text-xs text-gray-500">Today, 9:45 AM</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <div class="bg-green-100 rounded-full p-2 flex-shrink-0 mt-1">
+                                        <i class="fas fa-calendar-check text-green-500 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm"><strong>Meeting completed</strong> with Michael Brown</p>
+                                        <p class="text-xs text-gray-500">Yesterday, 3:30 PM</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <div class="bg-purple-100 rounded-full p-2 flex-shrink-0 mt-1">
+                                        <i class="fas fa-clipboard-check text-purple-500 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm"><strong>Ethics approval</strong> for Sarah Davis's project</p>
+                                        <p class="text-xs text-gray-500">Oct 14, 2:15 PM</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <div class="bg-yellow-100 rounded-full p-2 flex-shrink-0 mt-1">
+                                        <i class="fas fa-exclamation-triangle text-yellow-500 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm"><strong>Deadline approaching</strong> for Alex Wilson</p>
+                                        <p class="text-xs text-gray-500">Oct 12, 10:00 AM</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="border-b px-4 py-3 flex justify-between items-center">
+                            <h3 class="font-semibold">Upcoming Deadlines/Meetings</h3>
+                            <a href="#" class="text-blue-600 text-sm">View All</a>
+                        </div>
+                        <div class="p-4">
+                            <ul class="space-y-3">
+                                <li class="flex items-center space-x-3 bg-blue-50 p-3 rounded-lg">
+                                    <div class="flex-shrink-0 text-center">
+                                        <span class="block text-lg font-bold">18</span>
+                                        <span class="block text-xs text-gray-500">OCT</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium">Meeting with Emma Johnson</p>
+                                        <p class="text-xs text-gray-500">2:00 PM - 3:00 PM • Progress Review</p>
+                                    </div>
+                                    <div>
+                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">In 2 days</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-center space-x-3 p-3 rounded-lg">
+                                    <div class="flex-shrink-0 text-center">
+                                        <span class="block text-lg font-bold">20</span>
+                                        <span class="block text-xs text-gray-500">OCT</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium">Meeting with Michael Brown</p>
+                                        <p class="text-xs text-gray-500">10:00 AM - 11:00 AM • Data Analysis</p>
+                                    </div>
+                                    <div>
+                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">In 4 days</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-center space-x-3 bg-red-50 p-3 rounded-lg">
+                                    <div class="flex-shrink-0 text-center">
+                                        <span class="block text-lg font-bold">22</span>
+                                        <span class="block text-xs text-gray-500">OCT</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium">Ethics Form Deadline</p>
+                                        <p class="text-xs text-gray-500">Alex Wilson • Final Submission</p>
+                                    </div>
+                                    <div>
+                                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Important</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-center space-x-3 p-3 rounded-lg">
+                                    <div class="flex-shrink-0 text-center">
+                                        <span class="block text-lg font-bold">25</span>
+                                        <span class="block text-xs text-gray-500">OCT</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <p class="text-sm font-medium">Meeting with Sarah Davis</p>
+                                        <p class="text-xs text-gray-500">3:30 PM - 4:30 PM • Methodology Review</p>
+                                    </div>
+                                    <div>
+                                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">In 9 days</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- My Students -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="border-b px-6 py-3 flex justify-between items-center">
+                        <h3 class="font-semibold">My Students</h3>
+                        <div class="flex items-center space-x-2">
+                            <input type="text" placeholder="Search students..." class="border rounded px-3 py-1 text-sm">
+                            <select class="border rounded px-3 py-1 text-sm">
+                                <option>All Status</option>
+                                <option>On Track</option>
+                                <option>Behind Schedule</option>
+                                <option>Needs Attention</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr class="bg-gray-50 border-b">
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Program</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Next Meeting</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Next Deadline</th>
+                                    <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                                <span class="text-blue-800">EJ</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Emma Johnson</p>
+                                                <p class="text-xs text-gray-500">emma.johnson@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>PhD Computer Science</p>
+                                        <p class="text-xs text-gray-500">Year 2</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">75% complete</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">On Track</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 18, 2:00 PM</p>
+                                        <p class="text-xs text-gray-500">In 2 days</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Nov 5, 2024</p>
+                                        <p class="text-xs text-gray-500">Chapter 4 Draft</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-800">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-green-600 hover:text-green-800">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <button class="text-purple-600 hover:text-purple-800">
+                                                <i class="fas fa-comment"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                                <span class="text-green-800">MB</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Michael Brown</p>
+                                                <p class="text-xs text-gray-500">michael.brown@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>MSc Data Science</p>
+                                        <p class="text-xs text-gray-500">Year 1</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 60%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">60% complete</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">On Track</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 20, 10:00 AM</p>
+                                        <p class="text-xs text-gray-500">In 4 days</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 30, 2024</p>
+                                        <p class="text-xs text-gray-500">Data Analysis</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-800">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-green-600 hover:text-green-800">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <button class="text-purple-600 hover:text-purple-800">
+                                                <i class="fas fa-comment"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                                                <span class="text-yellow-800">AW</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Alex Wilson</p>
+                                                <p class="text-xs text-gray-500">alex.wilson@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>PhD Psychology</p>
+                                        <p class="text-xs text-gray-500">Year 3</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 45%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">45% complete</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Behind Schedule</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 19, 1:00 PM</p>
+                                        <p class="text-xs text-gray-500">In 3 days</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 22, 2024</p>
+                                        <p class="text-xs text-red-500 font-medium">Ethics Form (Urgent)</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-800">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-green-600 hover:text-green-800">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <button class="text-purple-600 hover:text-purple-800">
+                                                <i class="fas fa-comment"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                                <span class="text-purple-800">SD</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Sarah Davis</p>
+                                                <p class="text-xs text-gray-500">sarah.davis@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>PhD Biology</p>
+                                        <p class="text-xs text-gray-500">Year 2</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">80% complete</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">On Track</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 25, 3:30 PM</p>
+                                        <p class="text-xs text-gray-500">In 9 days</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Nov 15, 2024</p>
+                                        <p class="text-xs text-gray-500">Methodology Chapter</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-800">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-green-600 hover:text-green-800">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <button class="text-purple-600 hover:text-purple-800">
+                                                <i class="fas fa-comment"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="border-b hover:bg-gray-50">
+                                    <td class="py-3 px-4">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                                <span class="text-red-800">RG</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium">Robert Garcia</p>
+                                                <p class="text-xs text-gray-500">robert.garcia@example.com</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>MSc Computer Engineering</p>
+                                        <p class="text-xs text-gray-500">Year 1</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-red-500 h-2 rounded-full" style="width: 25%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">25% complete</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Needs Attention</span>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 17, 9:00 AM</p>
+                                        <p class="text-xs text-red-500">Tomorrow (Urgent)</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <p>Oct 28, 2024</p>
+                                        <p class="text-xs text-gray-500">Project Proposal</p>
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        <div class="flex space-x-2">
+                                            <button class="text-blue-600 hover:text-blue-800">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="text-green-600 hover:text-green-800">
+                                                <i class="fas fa-calendar-plus"></i>
+                                            </button>
+                                            <button class="text-purple-600 hover:text-purple-800">
+                                                <i class="fas fa-comment"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-3 flex items-center justify-between border-t">
+                        <p class="text-sm text-gray-500">Showing 5 of 12 students</p>
+                        <div class="flex space-x-1">
+                            <button class="border rounded px-3 py-1 text-sm">Previous</button>
+                            <button class="border bg-blue-600 text-white rounded px-3 py-1 text-sm">1</button>
+                            <button class="border rounded px-3 py-1 text-sm">2</button>
+                            <button class="border rounded px-3 py-1 text-sm">3</button>
+                            <button class="border rounded px-3 py-1 text-sm">Next</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- My Meetings -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="border-b px-6 py-3 flex justify-between items-center">
+                        <h3 class="font-semibold">My Meetings</h3>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm">Schedule New Meeting</button>
+                    </div>
+                    <div class="p-4">
+                        <div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+                            <div class="md:col-span-2 border-r pr-4">
+                                <div class="mb-4">
+                                    <h4 class="text-sm font-semibold mb-2">Calendar</h4>
+                                    <div class="bg-gray-50 rounded p-2">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <button class="text-gray-700"><i class="fas fa-chevron-left"></i></button>
+                                            <h5 class="font-medium">October 2024</h5>
+                                            <button class="text-gray-700"><i class="fas fa-chevron-right"></i></button>
+                                        </div>
+                                        <div class="grid grid-cols-7 text-center text-xs">
+                                            <div class="py-1">Su</div>
+                                            <div class="py-1">Mo</div>
+                                            <div class="py-1">Tu</div>
+                                            <div class="py-1">We</div>
+                                            <div class="py-1">Th</div>
+                                            <div class="py-1">Fr</div>
+                                            <div class="py-1">Sa</div>
+                                        </div>
+                                        <div class="grid grid-cols-7 text-center text-xs">
+                                            <div class="py-1 text-gray-400">29</div>
+                                            <div class="py-1 text-gray-400">30</div>
+                                            <div class="py-1">1</div>
+                                            <div class="py-1">2</div>
+                                            <div class="py-1">3</div>
+                                            <div class="py-1">4</div>
+                                            <div class="py-1">5</div>
+                                            <div class="py-1">6</div>
+                                            <div class="py-1">7</div>
+                                            <div class="py-1">8</div>
+                                            <div class="py-1">9</div>
+                                            <div class="py-1">10</div>
+                                            <div class="py-1">11</div>
+                                            <div class="py-1">12</div>
+                                            <div class="py-1">13</div>
+                                            <div class="py-1">14</div>
+                                            <div class="py-1">15</div>
+                                            <div class="py-1 bg-gray-200 font-bold rounded">16</div>
+                                            <div class="py-1">17</div>
+                                            <div class="py-1">18</div>
+                                            <div class="py-1 bg-blue-100 rounded">19</div>
+                                            <div class="py-1">20</div>
+                                            <div class="py-1">21</div>
+                                            <div class="py-1">22</div>
+                                            <div class="py-1">23</div>
+                                            <div class="py-1 bg-blue-100 rounded">24</div>
+                                            <div class="py-1">25</div>
+                                            <div class="py-1">26</div>
+                                            <div class="py-1">27</div>
+                                            <div class="py-1">28</div>
+                                            <div class="py-1">29</div>
+                                            <div class="py-1">30</div>
+                                            <div class="py-1">31</div>
+                                            <div class="py-1 text-gray-400">1</div>
+                                            <div class="py-1 text-gray-400">2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="text-sm font-semibold mb-2">Meeting Types</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-4 h-4 bg-blue-500 rounded"></div>
+                                            <span class="text-sm">Progress Review</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-4 h-4 bg-green-500 rounded"></div>
+                                            <span class="text-sm">Methodology</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-4 h-4 bg-purple-500 rounded"></div>
+                                            <span class="text-sm">Data Analysis</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-4 h-4 bg-yellow-500 rounded"></div>
+                                            <span class="text-sm">Thesis Review</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-4 h-4 bg-red-500 rounded"></div>
+                                            <span class="text-sm">Urgent Issue</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="md:col-span-5">
+                                <h4 class="text-sm font-semibold mb-2 px-2">Upcoming Meetings</h4>
+                                <div class="space-y-3">
+                                    <div class="border rounded-lg p-3">
+                                        <div class="flex justify-between mb-2">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-8 bg-blue-500 rounded-full"></div>
+                                                <div class="flex-1">
+                                                    <p class="font-medium">Progress Review with Emma Johnson</p>
+                                                    <p class="text-xs text-gray-500">Oct 18, 2024 • 2:00 PM - 3:00 PM</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Location:</div>
+                                            <div>Room 302, Science Building</div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Agenda:</div>
+                                            <div>Discuss thesis progress, review chapter 3 draft, plan next steps for data analysis</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border rounded-lg p-3">
+                                        <div class="flex justify-between mb-2">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-8 bg-red-500 rounded-full"></div>
+                                                <div class="flex-1">
+                                                    <p class="font-medium">Urgent Meeting with Robert Garcia</p>
+                                                    <p class="text-xs text-gray-500">Oct 17, 2024 • 9:00 AM - 10:00 AM</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Location:</div>
+                                            <div>Online (Zoom)</div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Agenda:</div>
+                                            <div>Address lack of progress, review project timeline, discuss support needs</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border rounded-lg p-3">
+                                        <div class="flex justify-between mb-2">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-8 bg-purple-500 rounded-full"></div>
+                                                <div class="flex-1">
+                                                    <p class="font-medium">Data Analysis Meeting with Michael Brown</p>
+                                                    <p class="text-xs text-gray-500">Oct 20, 2024 • 10:00 AM - 11:00 AM</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="text-gray-500 hover:text-gray-700">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Location:</div>
+                                            <div>Data Lab, Computing Building</div>
+                                        </div>
+                                        <div class="flex items-start space-x-3 text-sm">
+                                            <div class="text-gray-500 w-20">Agenda:</div>
+                                            <div>Review preliminary results, discuss statistical methods, plan visualization approach</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Progress Tracking & Reports -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="border-b px-4 py-3 flex justify-between items-center">
+                            <h3 class="font-semibold">Project Phase Distribution</h3>
+                            <select class="border rounded px-2 py-1 text-sm">
+                                <option>All Students</option>
+                                <option>PhD Students</option>
+                                <option>MSc Students</option>
+                            </select>
+                        </div>
+                        <div class="p-4 h-60">
+                            <canvas id="projectPhaseChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="border-b px-4 py-3 flex justify-between items-center">
+                            <h3 class="font-semibold">Meeting Attendance Rate</h3>
+                            <select class="border rounded px-2 py-1 text-sm">
+                                <option>Last 6 Months</option>
+                                <option>Last 3 Months</option>
+                                <option>Last Month</option>
+                            </select>
+                        </div>
+                        <div class="p-4 h-60">
+                            <canvas id="attendanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Generate Reports -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="border-b px-4 py-3">
+                        <h3 class="font-semibold">Generate Reports</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="border rounded-lg p-4 hover:shadow-md cursor-pointer">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-medium">Student Progress Report</h4>
+                                        <p class="text-sm text-gray-500">Detailed progress for each student</p>
+                                    </div>
+                                    <div class="text-blue-500">
+                                        <i class="fas fa-file-alt text-xl"></i>
+                                    </div>
+                                </div>
+                                <button class="text-sm text-blue-600 hover:text-blue-800">Generate Report</button>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md cursor-pointer">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-medium">Meeting Summary</h4>
+                                        <p class="text-sm text-gray-500">Overview of all meetings and outcomes</p>
+                                    </div>
+                                    <div class="text-green-500">
+                                        <i class="fas fa-calendar-check text-xl"></i>
+                                    </div>
+                                </div>
+                                <button class="text-sm text-blue-600 hover:text-blue-800">Generate Report</button>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md cursor-pointer">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h4 class="font-medium">Ethics Review Status</h4>
+                                        <p class="text-sm text-gray-500">Status of all ethics submissions</p>
+                                    </div>
+                                    <div class="text-purple-500">
+                                        <i class="fas fa-clipboard-check text-xl"></i>
+                                    </div>
+                                </div>
+                                <button class="text-sm text-blue-600 hover:text-blue-800">Generate Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- My Profile -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="border-b px-4 py-3">
+                        <h3 class="font-semibold">My Profile</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="md:w-1/3 flex flex-col items-center mb-6 md:mb-0">
+                                <div class="w-32 h-32 bg-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-light">
+                                    JD
+                                </div>
+                                <h3 class="mt-4 font-semibold text-lg">Dr. Jane Doe</h3>
+                                <p class="text-gray-500">Professor of Computer Science</p>
+                                <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded text-sm">Edit Profile</button>
+                            </div>
+                            
+                            <div class="md:w-2/3 md:pl-6 border-t md:border-t-0 md:border-l pt-4 md:pt-0 md:pl-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Email</h4>
+                                        <p>jane.doe@university.edu</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Phone</h4>
+                                        <p>+1 (555) 123-4567</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Department</h4>
+                                        <p>Computer Science</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Office</h4>
+                                        <p>CS Building, Room 405</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Research Areas</h4>
+                                        <p>Artificial Intelligence, Machine Learning, Data Science</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-medium text-gray-500">Max. Students</h4>
+                                        <p>15 (Currently supervising: 12)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6">
+                                    <h4 class="text-sm font-medium text-gray-500">Biography</h4>
+                                    <p class="mt-1 text-sm">
+                                        Dr. Jane Doe is a Professor of Computer Science specializing in artificial intelligence and machine learning. 
+                                        She has supervised over 30 PhD students and 50 MSc students throughout her career, with expertise in guiding 
+                                        research projects related to natural language processing, computer vision, and data mining applications.
+                                    </p>
+                                </div>
+                                
+                                <div class="mt-6">
+                                    <h4 class="text-sm font-medium text-gray-500">Office Hours</h4>
+                                    <div class="mt-1 text-sm">
+                                        <p>Monday: 10:00 AM - 12:00 PM</p>
+                                        <p>Wednesday: 2:00 PM - 4:00 PM</p>
+                                        <p>Thursday: 1:00 PM - 3:00 PM (Online)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initialize charts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project Phase Chart
+            const projectPhaseCtx = document.getElementById('projectPhaseChart').getContext('2d');
+            new Chart(projectPhaseCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Research Proposal', 'Literature Review', 'Methodology', 'Data Collection', 'Analysis', 'Writing Up'],
+                    datasets: [{
+                        data: [2, 3, 4, 1, 1, 1],
+                        backgroundColor: [
+                            '#4299E1',  // blue-500
+                            '#48BB78',  // green-500
+                            '#ECC94B',  // yellow-400
+                            '#ED8936',  // orange-500
+                            '#9F7AEA',  // purple-500
+                            '#F56565',  // red-500
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Meeting Attendance Chart
+            const attendanceCtx = document.getElementById('attendanceChart').getContext('2d');
+            new Chart(attendanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                    datasets: [{
+                        label: 'Attended',
+                        data: [18, 19, 15, 12, 17, 14],
+                        backgroundColor: '#4299E1', // blue-500
+                        barPercentage: 0.6,
+                    }, {
+                        label: 'Missed',
+                        data: [2, 1, 3, 2, 1, 2],
+                        backgroundColor: '#F56565', // red-500
+                        barPercentage: 0.6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Meetings'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+       </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="./JS/supabaseClient.js"></script>
+    <script src="./JS/auth.js"></script>
+    <script src="./JS/script.js"></script>
+    <script src="./JS/supervisor.js"></script>
+</body>
+</html>

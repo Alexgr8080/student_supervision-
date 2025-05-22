@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Supervision System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/student.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Supervision System</h1>
+        </div>
+        <div class="user-info">
+            <span id="userNameDisplay">Student Name</span>
+            <div id="userAvatar" class="avatar"></div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#ethics">Ethics Submission</a></li>
+            <li><a href="#thesis">Thesis Submission</a></li>
+            <li><a href="#meetings">Meetings</a></li>
+            <li><a href="#profile">My Profile</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="overview" class="active-section">
+            <h2>Student Overview</h2>
+            <h3>Academic Year: 2024-2025</h3>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h4>Project Status</h4>
+                    <p id="projectStatus">--</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Ethics Approval</h4>
+                    <p id="ethicsStatus">--</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Thesis Submission</h4>
+                    <p id="thesisStatus">--</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Days to Next Deadline</h4>
+                    <p id="nextDeadline">--</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h3>Recent Activity</h3>
+                <div id="recentActivityContainer">
+                    <p>Loading activity...</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h3>Upcoming Deadlines</h3>
+                <div id="upcomingDeadlinesContainer">
+                    <p>Loading deadlines...</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ethics" class="hidden-section">
+            <h2>Ethics Submission</h2>
+            <div class="ethics-status-container">
+                <h3>Current Ethics Form Status: <span id="currentEthicsStatus">Not Started</span></h3>
+                <button id="newEthicsFormBtn" class="primary-button">Start New Ethics Form</button>
+                <button id="continueEthicsFormBtn" class="secondary-button hidden">Continue Draft Form</button>
+            </div>
+            
+            <div class="container">
+                <h3>Ethics Submission History</h3>
+                <div id="ethicsHistoryContainer">
+                    <p>Loading submission history...</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="thesis" class="hidden-section">
+            <h2>Thesis Submission</h2>
+            <div class="thesis-status-container">
+                <h3>Current Thesis Status: <span id="currentThesisStatus">Not Started</span></h3>
+                <button id="newThesisBtn" class="primary-button">Submit Thesis</button>
+                <button id="continueThesisBtn" class="secondary-button hidden">Continue Draft</button>
+            </div>
+            
+            <div class="container">
+                <h3>Thesis Submission History</h3>
+                <div id="thesisHistoryContainer">
+                    <p>Loading submission history...</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="meetings" class="hidden-section">
+            <h2>My Meetings</h2>
+            <div class="container">
+                <h3>Upcoming Meetings</h3>
+                <div id="upcomingMeetingsContainer">
+                    <p>Loading upcoming meetings...</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <h3>Past Meetings</h3>
+                <div id="pastMeetingsContainer">
+                    <p>Loading past meetings...</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="profile" class="hidden-section">
+            <h2>My Profile</h2>
+            <div class="profile-container">
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <input type="text" id="studentName" name="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <input type="email" id="studentEmail" name="studentEmail" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentDepartment">Department</label>
+                        <input type="text" id="studentDepartment" name="studentDepartment">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentProgram">Program</label>
+                        <input type="text" id="studentProgram" name="studentProgram" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="supervisorName">Assigned Supervisor</label>
+                        <input type="text" id="supervisorName" name="supervisorName" disabled>
+                    </div>
+                    <button type="submit" class="primary-button">Update Profile</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Supervision System</p>
+    </footer>
+</body>
+</html>
